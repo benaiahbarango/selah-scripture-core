@@ -17,9 +17,16 @@ declare module "@tiptap/core" {
   }
 }
 
+// Authored against NodeConfig so the callbacks stay fully typed, but returned
+// as `any`: consuming apps spread this into `Node.create`, and a strict
+// NodeConfig return would tie its method `this`-types to the Tiptap version
+// this package was built against, colliding with the app's own Tiptap copy.
+// Apps declare the `convertScripture` command augmentation themselves (see
+// each app's scripture-commands.d.ts).
 export const createSharedExtensionConfig = (
   getAttrs: ScriptureAttrsResolver,
-): Partial<NodeConfig<any>> => ({
+): any => {
+  const config: Partial<NodeConfig<any>> = {
   addAttributes() {
     return {
       book: {
@@ -138,7 +145,10 @@ export const createSharedExtensionConfig = (
         },
     };
   },
-  renderText({ node }) {
-    return `${formatReference(node.attrs as BibleReference)}`;
-  },
-});
+    renderText({ node }) {
+      return `${formatReference(node.attrs as BibleReference)}`;
+    },
+  };
+
+  return config;
+};

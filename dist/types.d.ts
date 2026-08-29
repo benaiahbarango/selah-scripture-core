@@ -3,7 +3,7 @@ export type BibleReference = {
     chapter: number;
     startVerse: number;
     endVerse: number;
-    isRange: boolean;
+    isRange?: boolean;
 };
 export type ParsedReference = {
     book: string;

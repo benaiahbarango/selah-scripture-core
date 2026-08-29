@@ -1,4 +1,3 @@
-import { NodeConfig } from "@tiptap/react";
 import { ScriptureAttrsResolver } from "./resolve-scripture-match";
 declare module "@tiptap/core" {
     interface Commands<ReturnType> {
@@ -7,4 +6,4 @@ declare module "@tiptap/core" {
         };
     }
 }
-export declare const createSharedExtensionConfig: (getAttrs: ScriptureAttrsResolver) => Partial<NodeConfig<any>>;
+export declare const createSharedExtensionConfig: (getAttrs: ScriptureAttrsResolver) => any;
