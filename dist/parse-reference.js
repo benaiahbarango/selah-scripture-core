@@ -4,7 +4,7 @@ exports.parseReference = parseReference;
 const book_abbreviations_1 = require("./book-abbreviations");
 function parseReference(ref) {
     const bookMatch = ref.match(/^((?:\d\s?)?[A-Za-z]+)\.?/);
-    const chapterVerseMatch = ref.match(/(\d+):(\d+|\*)(?:-(\d+))?/);
+    const chapterVerseMatch = ref.match(/(\d+)\s*:\s*(\d+|\*)(?:\s*-\s*(\d+))?/);
     if (!bookMatch || !chapterVerseMatch)
         return null;
     const bookKey = bookMatch[1].replace(/\s+/g, "").toLowerCase();

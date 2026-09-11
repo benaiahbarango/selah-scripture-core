@@ -39,3 +39,15 @@ test("fully-spelled 1 Thessalonians resolves (drift fix)", () => {
   const r = resolveReference("1thessalonians 5:16");
   assert.equal(r.book, "1 Thessalonians");
 });
+
+test("tolerates whitespace around the colon", () => {
+  assert.deepEqual(resolveReference("Ex 4: 5"), resolveReference("Ex 4:5"));
+  assert.deepEqual(resolveReference("Mat 4 : 5"), resolveReference("Mat 4:5"));
+});
+
+test("tolerates whitespace around the range dash", () => {
+  const r = resolveReference("Romans 8 : 28 - 30");
+  assert.equal(r.startVerse, 28);
+  assert.equal(r.endVerse, 30);
+  assert.equal(r.isRange, true);
+});

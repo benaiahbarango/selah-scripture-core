@@ -3,7 +3,7 @@ import { ParsedReference } from "./types";
 
 export function parseReference(ref: string): ParsedReference | null {
   const bookMatch = ref.match(/^((?:\d\s?)?[A-Za-z]+)\.?/);
-  const chapterVerseMatch = ref.match(/(\d+):(\d+|\*)(?:-(\d+))?/);
+  const chapterVerseMatch = ref.match(/(\d+)\s*:\s*(\d+|\*)(?:\s*-\s*(\d+))?/);
 
   if (!bookMatch || !chapterVerseMatch) return null;
 

@@ -1,5 +1,7 @@
+// Whitespace is tolerated around the colon and the range dash, so loosely
+// typed references ("Mat 4 : 5", "Ex 4: 5", "Rom 8 - 10") still convert.
 export const SCRIPTURE_REGEX =
-  /((?:\d\s?)?[A-Za-z]+\.?\s\d+:(?:\d+(?:-\d+)?|\*))/;
+  /((?:\d\s?)?[A-Za-z]+\.?\s\d+\s*:\s*(?:\d+(?:\s*-\s*\d+)?|\*))/;
 
 export const SCRIPTURE_TRIGGER = "[ .;]";
 
