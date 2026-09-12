@@ -1,4 +1,4 @@
-import { BOOK_ABBREVIATIONS } from "./book-abbreviations";
+import { resolveBook } from "./resolve-book";
 import { ParsedReference } from "./types";
 
 export function parseReference(ref: string): ParsedReference | null {
@@ -7,11 +7,19 @@ export function parseReference(ref: string): ParsedReference | null {
 
   if (!bookMatch || !chapterVerseMatch) return null;
 
-  const bookKey = bookMatch[1].replace(/\s+/g, "").toLowerCase();
-  const book = BOOK_ABBREVIATIONS[bookKey];
+  const rawBook = bookMatch[1].trim();
 
-  if (!book) return null;
+  const resolved = resolveBook(rawBook, {
+    hasChapterVerse: true,
+    hasRange: !!chapterVerseMatch[3] || chapterVerseMatch[2] === "*",
+    hasNumberPrefix: /^\d/.test(rawBook),
+  });
 
+  // Only auto-convert when confident. "medium" guesses are left for a
+  // suggestion affordance so a wrong correction never lands silently.
+  if (!resolved || resolved.confidence === "medium") return null;
+
+  const book = resolved.book;
   const chapter = Number(chapterVerseMatch[1]);
   const verseToken = chapterVerseMatch[2];
 

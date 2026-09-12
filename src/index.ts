@@ -12,5 +12,11 @@ export {
 export { VERSE_COUNTS } from "./verse-counts";
 export { parseReference } from "./parse-reference";
 export { resolveReference } from "./resolve-reference";
+export { resolveBook } from "./resolve-book";
 export { formatReference } from "./format-reference";
 export type { BibleReference, ParsedReference } from "./types";
+export type {
+  BookConfidence,
+  ResolvedBook,
+  ReferenceStructure,
+} from "./resolve-book";

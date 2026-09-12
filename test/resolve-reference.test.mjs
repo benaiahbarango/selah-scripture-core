@@ -51,3 +51,18 @@ test("tolerates whitespace around the range dash", () => {
   assert.equal(r.endVerse, 30);
   assert.equal(r.isRange, true);
 });
+
+test("auto-corrects a high-confidence book misspelling", () => {
+  const r = resolveReference("Ephesains 1:3");
+  assert.equal(r.book, "Ephesians");
+  assert.equal(r.chapter, 1);
+  assert.equal(r.startVerse, 3);
+});
+
+test("completes a truncation inside a reference", () => {
+  assert.equal(resolveReference("Philip 4:13").book, "Philippians");
+});
+
+test("does not auto-convert a medium-confidence guess", () => {
+  assert.equal(resolveReference("janesis 1:1"), null);
+});

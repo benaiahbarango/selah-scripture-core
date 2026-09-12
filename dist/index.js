@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatReference = exports.resolveReference = exports.parseReference = exports.VERSE_COUNTS = exports.buildEnterRegex = exports.buildInputRuleRegex = exports.SCRIPTURE_START_BOUNDARY = exports.SCRIPTURE_TRIGGER = exports.SCRIPTURE_REGEX = exports.BOOK_ABBREVIATIONS_REVERSED = exports.BOOK_ABBREVIATIONS = void 0;
+exports.formatReference = exports.resolveBook = exports.resolveReference = exports.parseReference = exports.VERSE_COUNTS = exports.buildEnterRegex = exports.buildInputRuleRegex = exports.SCRIPTURE_START_BOUNDARY = exports.SCRIPTURE_TRIGGER = exports.SCRIPTURE_REGEX = exports.BOOK_ABBREVIATIONS_REVERSED = exports.BOOK_ABBREVIATIONS = void 0;
 var book_abbreviations_1 = require("./book-abbreviations");
 Object.defineProperty(exports, "BOOK_ABBREVIATIONS", { enumerable: true, get: function () { return book_abbreviations_1.BOOK_ABBREVIATIONS; } });
 Object.defineProperty(exports, "BOOK_ABBREVIATIONS_REVERSED", { enumerable: true, get: function () { return book_abbreviations_1.BOOK_ABBREVIATIONS_REVERSED; } });
@@ -16,5 +16,7 @@ var parse_reference_1 = require("./parse-reference");
 Object.defineProperty(exports, "parseReference", { enumerable: true, get: function () { return parse_reference_1.parseReference; } });
 var resolve_reference_1 = require("./resolve-reference");
 Object.defineProperty(exports, "resolveReference", { enumerable: true, get: function () { return resolve_reference_1.resolveReference; } });
+var resolve_book_1 = require("./resolve-book");
+Object.defineProperty(exports, "resolveBook", { enumerable: true, get: function () { return resolve_book_1.resolveBook; } });
 var format_reference_1 = require("./format-reference");
 Object.defineProperty(exports, "formatReference", { enumerable: true, get: function () { return format_reference_1.formatReference; } });
